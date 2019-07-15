@@ -2,6 +2,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: forgerock_amster
   author: darkedges
   description: ForgeRock Amster for Linux.
   company: "DarkEdges"

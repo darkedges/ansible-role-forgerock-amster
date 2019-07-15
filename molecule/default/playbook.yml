@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Lets make this pass
+      debug:
+        msg: "All good"

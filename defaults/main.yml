@@ -1,7 +1,10 @@
-install_root: /opt/ois
+---
+
+amster_install_path: /opt/ois
 staging_dir: /tmp/staging
-fr_user: fr
-fr_group: fr
-amster_install_file: Amster-6.5.0.zip
+fr_user: forgerock
+fr_group: forgerock
+amster_version: 6.5.0
+amster_install_file: "Amster-{{ amster_version }}.zip"
 amster_install_directory_name: amster
-amster_install_directory_base: "{{ install_root }}/{{ amster_install_directory_name }}"
+amster_install_directory_base: "{{ amster_install_path }}/{{ amster_install_directory_name }}"

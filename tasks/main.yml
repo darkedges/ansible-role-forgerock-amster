@@ -1,45 +1,45 @@
 ---
 
 - name: Install required packages. This takes a while - be patient
-  package: 
+  package:
     name: "{{ item }}"
-    state: latest
+    state: present
   with_items:
-   - unzip
+    - unzip
 
 - name: create top level software directories
-  file: 
-    state: directory 
-    path: "{{ item }}" 
-    owner: "{{ fr_user }}" 
-    group: "{{ fr_group }}" 
+  file:
+    state: directory
+    path: "{{ item }}"
+    owner: "{{ fr_user }}"
+    group: "{{ fr_group }}"
     mode: 0755
   with_items:
     - "{{ staging_dir }}"
-    - "{{ amster_install_directory_base }}" 
+    - "{{ amster_install_directory_base }}"
 
 - name: upload staging files
   copy:
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     owner: "{{ fr_user }}"
-    group: "{{ fr_group }}" 
-    mode: 0755 
+    group: "{{ fr_group }}"
+    mode: 0755
   with_items:
     - src: "{{ amster_install_file }}"
-      dest: "{{ staging_dir }}/{{ amster_install_file }}" 
+      dest: "{{ staging_dir }}/{{ amster_install_file }}"
 
 - name: extract Amster
-  unarchive: 
-    src: "{{ staging_dir }}/{{ amster_install_file }}" 
-    dest: "{{ amster_install_directory_base }}" 
-    copy: no
+  unarchive:
+    src: "{{ staging_dir }}/{{ amster_install_file }}"
+    dest: "{{ amster_install_directory_base }}"
+    copy: "no"
     creates: "{{ amster_install_directory_base }}/amster-6.5.0.jar"
 
 - name: change file ownership
-  file: 
-    path: "{{ amster_install_directory_base }}" 
-    owner: "{{ fr_user }}" 
-    group: "{{ fr_group }}" 
+  file:
+    path: "{{ amster_install_directory_base }}"
+    owner: "{{ fr_user }}"
+    group: "{{ fr_group }}"
     mode: 0755
-    recurse: yes       
+    recurse: "yes"
