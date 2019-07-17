@@ -1,0 +1,25 @@
+---
+
+- name: "wait for FRAM to come up"
+  uri:
+    url: "{{ fram_server_url }}/config/options.htm"
+    status_code: 200
+    return_content: "no"
+  register: result
+  until: result.status == 200
+  retries: 1
+  delay: 1
+
+- name: create FRAM installation file
+  become: true
+  become_user: "{{ amster_fr_user }}"
+  template:
+    src: "installfram.amster.j2"
+    dest: "/tmp/installfram.amster"
+
+- name: execute FRAM installation
+  become: true
+  become_user: "{{ amster_fr_user }}"
+  shell: "{{ amster_install_directory_base }}/amster /tmp/installfram.amster"
+  environment:
+    JAVA_HOME: "/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el7_6.x86_64/jre"
