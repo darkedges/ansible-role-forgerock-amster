@@ -17,7 +17,7 @@ fram_server_hostname: "fram-01"
 fram_server_lb_hostname: "fram"
 fram_server_domain: "example.com"
 fram_server_port: "443"
-fram_lb_port:  "443"
+fram_lb_port: "443"
 fram_server_context: "/openam"
 fram_admin_password: "{{ amster_default_password }}"
 fram_tomcat_user: "forgerock"
@@ -49,12 +49,12 @@ amster_fram_install_userStorePort: "389"
 amster_fram_install_userStoreRootSuffix: "dc=openam,dc=forgerock,dc=org"
 amster_fram_install_userStoreType: "LDAPv3ForOpenDS"
 amster_fram_install_userStoreSsl: "simple"
-amster_fram_install_userStoreDomainName: 
+amster_fram_install_userStoreDomainName:
 
 amster_fram_install_cookieDomain_enabled: false
 amster_fram_install_cookieDomain: "{{ fram_server_domain }}"
 amster_fram_install_lb_enabled: false
-amster_fram_install_lbPrimaryUrl: "{{ fram_server_scheme }}://{{ fram_server_lb_hostname }}.{{ fram_server_domain }}:{{ fram_lb_port }}{{ fram_server_context }}"
+amster_fram_install_lbPrimaryUrl: "{{fram_server_scheme}}://{{ fram_server_lb_hostname }}.{{ fram_server_domain }}:{{ fram_lb_port }}{{ fram_server_context }}"
 amster_fram_install_lbSiteName: "{{ fram_server_lb_hostname }}"
 amster_fram_install_pwdEncKey_enabled: false
 amster_fram_install_pwdEncKey: "YcVB1NreOTzwK0DNpDWEJ7zpySrOU3RW"
