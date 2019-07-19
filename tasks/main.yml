@@ -3,5 +3,11 @@
 - include_tasks: "extract.yml"
   when: amster_install_operation == 'install'
 
+- name: Check that the amster_rsa exists
+  stat:
+    path: "{{ amster_fram_install_cfgDir }}/amster_rsa"
+  register: stat_result
+
 - include_tasks: "installFRAM.yml"
-  when: amster_install_operation == 'installfram'
+  when: amster_install_operation == 'installfram' and 
+        stat_result.stat.exists == False 

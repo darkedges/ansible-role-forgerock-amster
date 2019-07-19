@@ -30,3 +30,4 @@
   shell: "{{ amster_install_directory_base }}/amster /tmp/installfram.amster"
   args:
     executable: /bin/bash
+    creates: "{{ amster_fram_install_cfgDir }}/amster_rsa"
