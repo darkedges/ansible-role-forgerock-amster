@@ -1,5 +1,49 @@
 install-openam \
-    --serverUrl {{ fram_server_url }} \
     --adminPwd {{ fram_admin_password }}  \
+    --serverUrl {{ amster_fram_install_serverUrl }} \
+{% if amster_fram_install_cfgDir %}
+    --cfgDir  {{ amster_fram_install_cfgDir }}  \
+{% endif %}
+{% if amster_fram_install_authorizedKey %}
+    --authorizedKey {{ amster_fram_install_authorizedKey }}
+{% endif %}
+    --installLocale {{ amster_fram_install_installLocale }} \
+    --platformLocale {{ amster_fram_install_platformLocale }} \
+{% if amster_fram_install_cfgStore_enabled %}
+    --cfgStore {{ amster_fram_install_cfgStore }} \
+    --cfgStoreAdminPort {{ amster_fram_install_cfgStoreAdminPort }} \
+    --cfgStoreJmxPort {{ amster_fram_install_cfgStoreJmxPort }} \
+    --cfgStoreDirMgr {{ amster_fram_install_cfgStoreDirMgr }} \
+    --cfgStoreDirMgrPwd {{ amster_fram_install_cfgStoreDirMgrPwd }} \
+    --cfgStoreHost {{ amster_fram_install_cfgStoreHost }} \
+    --cfgStorePort {{ amster_fram_install_cfgStorePort }} \
+    --cfgStoreRootSuffix {{ amster_fram_install_cfgStoreRootSuffix }} \
+    --cfgStoreSsl {{ amster_fram_install_cfgStoreSsl }} \
+{% endif %}
+{% if amster_fram_install_cookieDomain_enabled %}
+    --cookieDomain {{ amster_fram_install_cookieDomain }} \
+{% endif %}
+{% if amster_fram_install_existingServerId %}
+    --existingServerId {{ amster_fram_install_existingServerId }} \
+{% endif %}
+{% if amster_fram_install_lb_enabled %}
+    --lbPrimaryUrl {{ amster_fram_install_lbPrimaryUrl }} \
+    --lbSiteName {{ amster_fram_install_lbSiteName }} \
+{% endif %}
+{% if amster_fram_install_pwdEncKey_enabled %}
+    --pwdEncKey {{ amster_fram_install_pwdEncKey }} \
+{% endif %}
+{% if amster_fram_install_userStore_enabled %}
+    --userStoreDirMgr {{ amster_fram_install_userStoreDirMgr }} \
+    --userStoreDirMgrPwd {{ amster_fram_install_userStoreDirMgrPwd }} \
+    --userStoreHost {{ amster_fram_install_userStoreHost }} \
+    --userStorePort {{ amster_fram_install_userStorePort }} \
+    --userStoreRootSuffix {{ amster_fram_install_userStoreRootSuffix}} \
+    --userStoreType {{ amster_fram_install_userStoreType }} \
+    --userStoreSsl {{ amster_fram_install_userStoreSsl }} \
+{% if amster_fram_install_userStoreType == 'LDAPv3ForADDC' %}
+    --userStoreDomainName  {{ amster_fram_install_userStoreDomainName }} \
+{% endif %}
+{% endif %}
     --acceptLicense
 :quit

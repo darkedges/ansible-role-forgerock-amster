@@ -4,6 +4,7 @@ amster_install_path: /opt/ois
 staging_dir: /tmp/staging
 amster_fr_user: forgerock
 amster_fr_group: forgerock
+amster_default_password: "Passw0rd"
 
 amster_install_operation: "install"
 amster_version: "6.5.0"
@@ -12,9 +13,49 @@ amster_install_directory_name: "amster"
 amster_install_directory_base: "{{ amster_install_path }}/{{ amster_install_directory_name }}"
 
 fram_server_scheme: "https"
-fram_server_hostname: "localhost"
+fram_server_hostname: "fram-01"
+fram_server_lb_hostname: "fram"
+fram_server_domain: "example.com"
 fram_server_port: "443"
+fram_lb_port:  "443"
 fram_server_context: "/openam"
-fram_server_url: "{{ fram_server_scheme }}://{{ fram_server_hostname }}:{{ fram_server_port }}{{ fram_server_context }}"
-fram_admin_password: "Passw0rd"
+fram_admin_password: "{{ amster_default_password }}"
 fram_tomcat_user: "forgerock"
+
+amster_fram_install_cfgDir_enabled: false
+amster_fram_install_cfgDir: "/home/{{ amster_fr_user }}"
+
+amster_fram_install_existingServerId:
+amster_fram_install_authorizedKey:
+amster_fram_install_installLocale: "en_US"
+amster_fram_install_platformLocale: "en_US"
+
+amster_fram_install_cfgStore_enabled: false
+amster_fram_install_cfgStore: "dirServer"
+amster_fram_install_cfgStoreDirMgr: "cn=Directory Manager"
+amster_fram_install_cfgStoreDirMgrPwd: "{{ amster_default_password }}"
+amster_fram_install_cfgStoreHost: "localhost"
+amster_fram_install_cfgStorePort: "389"
+amster_fram_install_cfgStoreAdminPort: "4444"
+amster_fram_install_cfgStoreJmxPort: "1689"
+amster_fram_install_cfgStoreRootSuffix: "dc=openam,dc=forgerock,dc=org"
+amster_fram_install_cfgStoreSsl: "simple"
+
+amster_fram_install_userStore_enabled: false
+amster_fram_install_userStoreDirMgr: "cn=Directory Manager"
+amster_fram_install_userStoreDirMgrPwd: "{{ amster_default_password }}"
+amster_fram_install_userStoreHost: "localhost"
+amster_fram_install_userStorePort: "389"
+amster_fram_install_userStoreRootSuffix: "dc=openam,dc=forgerock,dc=org"
+amster_fram_install_userStoreType: "LDAPv3ForOpenDS"
+amster_fram_install_userStoreSsl: "simple"
+amster_fram_install_userStoreDomainName: 
+
+amster_fram_install_cookieDomain_enabled: false
+amster_fram_install_cookieDomain: "{{ fram_server_domain }}"
+amster_fram_install_lb_enabled: false
+amster_fram_install_lbPrimaryUrl: "{{ fram_server_scheme }}://{{ fram_server_lb_hostname }}.{{ fram_server_domain }}:{{ fram_lb_port }}{{ fram_server_context }}"
+amster_fram_install_lbSiteName: "{{ fram_server_lb_hostname }}"
+amster_fram_install_pwdEncKey_enabled: false
+amster_fram_install_pwdEncKey: "YcVB1NreOTzwK0DNpDWEJ7zpySrOU3RW"
+amster_fram_install_serverUrl: "{{ fram_server_scheme }}://{{ fram_server_hostname }}.{{ fram_server_domain }}:{{ fram_server_port }}{{ fram_server_context }}"
