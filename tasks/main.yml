@@ -9,5 +9,5 @@
   register: stat_result
 
 - include_tasks: "installFRAM.yml"
-  when: amster_install_operation == 'installfram' and 
-        stat_result.stat.exists == False 
+  when: amster_install_operation == 'installfram' and
+        stat_result.stat.exists == False
